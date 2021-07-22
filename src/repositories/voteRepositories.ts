@@ -24,4 +24,17 @@ async function findSongById(id:number) {
     return true
 }
 
-export { addVote, removeVote, findSongById };
+async function verifyRate(id:number) {
+    const verify = await connection.query(`
+        SELECT * FROM songs WHERE id = $1
+    `, [id])
+    return verify.rows[0].rate;
+}
+
+async function deletSong(id:number) {
+    await connection.query(`
+        DELETE FROM songs WHERE id = $1
+    `, [id])
+}
+
+export { addVote, removeVote, findSongById, verifyRate, deletSong };

@@ -1,4 +1,4 @@
-import { addVote, removeVote, findSongById } from '../repositories/voteRepositories'
+import { addVote, removeVote, findSongById, deletSong, verifyRate } from '../repositories/voteRepositories'
 
 async function vote(id:number, type: string) {
     const songExist: boolean = await findSongById(id);
@@ -9,6 +9,10 @@ async function vote(id:number, type: string) {
         }
         else if(type === 'sub'){
             await removeVote(id);
+            const rate = await verifyRate(id);
+            if(parseInt(rate) <= -5){
+                await deletSong(id);
+            }
         }
         return true;
     }

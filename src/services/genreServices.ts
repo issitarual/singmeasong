@@ -1,4 +1,4 @@
-import { existsGenre, insertGenre } from '../repositories/genreRepositories';
+import { existsGenre, insertGenre, listGenres } from '../repositories/genreRepositories';
 
 async function addGenre(name:string) {
     const alreadyExist: {} | {
@@ -8,7 +8,11 @@ async function addGenre(name:string) {
     
     if(alreadyExist) return true
     await insertGenre(name);
-    return false
+    return false;
+};
+
+async function allGenres() {
+    return listGenres();
 }
 
-export { addGenre };
+export { addGenre, allGenres };

@@ -48,3 +48,12 @@ describe("POST /genres", () => {
     expect(response.status).toBe(409);
   })
 });
+
+describe("GET /genres", () => {
+  it("should answer with all genres", async () => {
+    const event = await createAGenre();
+
+    const response = await agent.get("/genres");
+    expect(response.body).toEqual([event]);
+  })
+});

@@ -1,13 +1,18 @@
 import { Request, Response } from 'express';
-import { existsSong } from '../repositories/recommendationsRepositories';
 import { vote } from '../services/voteServices'
 
-async function upVote(req: Request, res: Response) {
+async function score(req: Request, res: Response) {
+    const path = req.path;
+    let type:string = null;
+    if (path.includes('upvote')) type = 'sum';
+    else type = 'sub';
+
     const {id} = req.params;
     if(!id) return res.sendStatus(400);
     if(!parseInt(id)) return res.sendStatus(404);
+
     try{
-        const existSong = await vote(parseInt(id), 'sum');
+        const existSong = await vote(parseInt(id), type);
         if(!existSong) return res.sendStatus(409);
         else return res.sendStatus(200);
     }
@@ -32,4 +37,4 @@ async function downVote(req:Request, res: Response) {
     }
 }
 
-export { downVote, upVote };
+export { downVote, score };

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { addRecommendation } from '../services/recommendationsServices'
+import { addRecommendation } from '../services/newSongServices'
 
 async function recommendASong(req: Request, res: Response) {
     const { name, youtubeLink } = req.body;

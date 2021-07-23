@@ -1,4 +1,4 @@
-import { existsSong, insertSong } from '../repositories/recommendationsRepositories';
+import { existsSong, insertSong } from '../repositories/newSongRepositories';
 
 async function addRecommendation(youtubeLink: string, name: string) {
     const alreadyExist = await existsSong(youtubeLink);

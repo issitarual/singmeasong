@@ -9,4 +9,11 @@ async function topSongs(amount: string){
     return songs.rows;
 }
 
-export { topSongs };
+async function listAllSongs() {
+    const songs = await connection.query(`
+    SELECT * FROM songs
+`)
+return songs.rows;
+}
+
+export { topSongs, listAllSongs };

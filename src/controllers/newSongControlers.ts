@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { addRecommendation } from '../services/newSongServices'
 
 async function recommendASong(req: Request, res: Response) {
-    const { name, youtubeLink } = req.body;
+    const { name, youtubeLink } : {name: string; youtubeLink: string}= req.body;
     if(!name || !youtubeLink) return res.sendStatus(400);
     if(typeof name !== 'string'|| !youtubeLink.includes('https://www.youtube.com/watch?v=')) return res.sendStatus(404);
     try{

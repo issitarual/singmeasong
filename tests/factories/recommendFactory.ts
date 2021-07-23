@@ -1,7 +1,8 @@
 import faker from "faker";
+import { QueryResult } from "pg";
 import connection from "../../src/database";
 
-export async function recommendASong () {
+export async function recommendASong (): Promise<{name: string; youtubeLink: string; id: number; score: number}>{
     const score: number = 10;
     const data = {
     name: faker.name.findName(),
@@ -9,7 +10,7 @@ export async function recommendASong () {
     score: score,
   };
 
-  const song = await connection.query(
+  const song= await connection.query(
     `INSERT INTO "songs" ("name", "youtubeLink", "score") VALUES ($1, $2, $3) RETURNING *`,
     [data.name, data.youtubeLink, data.score]
   );

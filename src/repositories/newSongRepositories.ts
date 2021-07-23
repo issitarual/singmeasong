@@ -1,6 +1,6 @@
 import connection from '../database';
 
-async function existsSong(youtubeLink:string) {
+async function existsSong(youtubeLink:string): Promise<{} | {name: string, youtubeLink: string; id: number; score: number}> {
     const exist = await connection.query(`
     SELECT * 
     FROM songs 

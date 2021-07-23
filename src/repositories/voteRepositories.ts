@@ -24,7 +24,7 @@ async function findSongById(id:number) {
     return true
 }
 
-async function verifyRate(id:number) {
+async function verifyRate(id:number): Promise<string> {
     const verify = await connection.query(`
         SELECT * FROM songs WHERE id = $1
     `, [id])

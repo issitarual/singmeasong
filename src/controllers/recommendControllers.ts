@@ -4,7 +4,7 @@ import { songList, sortSong } from '../services/recommendServices';
 async function randomRecommendation(req: Request, res: Response) {
     try{
         const sortedSong = await sortSong();
-        if(!sortSong) return res.sendStatus(404);
+        if(!sortedSong) return res.sendStatus(404);
         else return res.send(sortedSong);
     }
     catch(e){

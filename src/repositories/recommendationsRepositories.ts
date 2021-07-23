@@ -11,12 +11,12 @@ async function existsSong(youtubeLink:string) {
 }
 
 async function insertSong(youtubeLink:string, name: string) {
-    const rate: number = 0;
+    const score: number = 0;
     await connection.query(`
         INSERT INTO songs
-        (name, "youtubeLink", rate)
+        (name, "youtubeLink", score)
         VALUES ($1, $2, $3)`,
-        [name, youtubeLink, rate]
+        [name, youtubeLink, score]
     );
 }
 

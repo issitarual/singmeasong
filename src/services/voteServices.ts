@@ -9,8 +9,8 @@ async function vote(id:number, type: string) {
         }
         else if(type === 'sub'){
             await removeVote(id);
-            const rate = await verifyRate(id);
-            if(parseInt(rate) <= -5){
+            const score = await verifyRate(id);
+            if(parseInt(score) <= -5){
                 await deletSong(id);
             }
         }

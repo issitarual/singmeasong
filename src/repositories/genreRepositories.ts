@@ -22,6 +22,7 @@ async function insertGenre( name: string) {
 async function listGenres() {
     const allGenres = await connection.query(`
         SELECT * FROM genre
+        ORDER BY name
     `,);
     return allGenres.rows;
 }

@@ -1,10 +1,10 @@
 import faker from "faker";
 import connection from "../../src/database";
 
-export async function recommendASong (): Promise<{name: string; youtubeLink: string; id: number; score: number}>{
+export async function createASong (): Promise<{name: string; youtubeLink: string; id: number; score: number}>{
     const score: number = 10;
     const data = {
-    name: faker.name.findName(),
+    name: faker.name.firstName(),
     youtubeLink: "https://www.youtube.com/watch?v=ePjtnSPFWK8&ab_channel=CHXVEVO",
     score: score,
   };

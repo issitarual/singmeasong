@@ -4,10 +4,10 @@ async function songList(amount:string) {
     return topSongs(amount);
 }
 
-async function sortSong(){
+async function sortSong(): Promise<boolean | {}>{
     const allSongs = await listAllSongs();
     const sort = Math.random() > 0.7;
-    let songs;
+    let songs: {}[];
     let max: number;
     let min: number = 0;
 
